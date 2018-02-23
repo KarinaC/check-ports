@@ -13,7 +13,7 @@ import requests
 
 r = requests.get('http://localhost:18082/v2/apps/')
 rformat = r.json()
-
+newport = 10004
 
 #Del dict completo, me traigo la key APPS
 apps = rformat.get('apps')
@@ -28,10 +28,15 @@ for item in apps:
 			for po in pm:
 				ports=po.get('servicePort')
 				print(ports)
+				if str(newport) not in str(ports):
+					print("puerto libre, usalo nomas")
+				else:
+					print("EPA EL PUERTO ESTA EN USO LOCOOO, BUSCATE OTRO")
 		else:
 			print("Docker" + "\"" + ids  + "\"" + " tien el Network seteado como HOST, no tiene portMappings")
 	except AttributeError:
 	    pass
+	#print(puertos)
 	print("")
 
 
