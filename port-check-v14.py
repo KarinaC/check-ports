@@ -40,7 +40,7 @@ def checkconnection():
       print("curl no conecta.fin." + str(conestatus))
 
 def consultapuertos():
-   r = requests.get('http://',args.marathon + "/v2/apps") #de esta forma el user solo ingresa la url de marathon --marathon http://localhost:18082
+   r = requests.get('http://'+ args.marathon + "/v2/apps") #de esta forma el user solo ingresa la url de marathon --marathon http://localhost:18082
    rformat = r.json()
    serviport = [] #lista vacia a la que se le van appendear los puertos obtenidos mas abajo
    name = []
