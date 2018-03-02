@@ -22,15 +22,27 @@ args = parser.parse_args()
 
 
 
-#def Checklink():
-#	if args.marathon
-
-
-
 
 #####################################
 #Creo la función que hara el chequeo
 #####################################
+
+def checkconnection():
+	cone = requests.get(args.marathon + "/v2/info")
+	conestatus = cone.status_code
+	print("")
+	print("#####################")
+	print("Chequeo de conección")
+	print("#####################")
+
+	if str(conestatus) == '200':
+		print("Hay conneción, el CODE STATUS es "+ str(conestatus))
+		print("")
+	else:
+		print("curl no conecta.fin." + str(conestatus))
+
+
+
 def consultapuertos():
 	r = requests.get(args.marathon + "/v2/apps") #de esta forma el user solo ingresa la url de marathon --marathon http://localhost:18082
 	rformat = r.json()
@@ -56,16 +68,18 @@ def consultapuertos():
 
 
 	if args.ports in todos:
+		print("######################")
 		print("--Chequeo del puerto--")
-		print("CUIDADO! el puerto esta en uso por " + "\"" + todos.get(args.ports) + "\"")
+		print("######################")
+		print("CUIDADO!!!!! El puerto esta en uso por " + "\"" + todos.get(args.ports) + "\"")
+		print("")
 	else:
 		print("--chequeo del puerto--")
 		print("puerto libre")
 
 if __name__ == '__main__':
-
-
-    consultapuertos()
+	checkconnection()
+	consultapuertos()
 
 
 
