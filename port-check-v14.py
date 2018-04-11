@@ -27,6 +27,7 @@ args = parser.parse_args()
 #Creo la función que hara el chequeo
 #####################################
 def checkconnection():
+
    cone = requests.get('http://' + args.marathon + "/v2/info")
    conestatus = cone.status_code
    print("")

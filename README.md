@@ -15,7 +15,7 @@ Python3 is recommended
 
 
 ```
-python3 port-check-v14.py --ports 10010 --marathon http://localhost:18082
+python3 port-check-v14.py --ports 10010 --marathon localhost:18082
 ```
 
 ## Authors
